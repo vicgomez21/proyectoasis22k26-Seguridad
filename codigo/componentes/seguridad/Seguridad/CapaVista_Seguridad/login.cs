@@ -1,4 +1,5 @@
-﻿using proyecto2k26;
+﻿using CapaControlador_Seguridad;
+using proyecto2k26;
 using proyectosisk26;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,17 @@ namespace CapaVista_Seguridad
 {
     public partial class login : Form
     {
+        string nombreTabla = "tblEmpleado";
+        Controlador controlador = new Controlador();
+        public void actualizarDataGridView()
+        {
+            DataTable dtVista = controlador.llenarDgv(nombreTabla);
+            dgbConsultaTabla.DataSource = dtVista;
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            actualizarDataGridView();
+        }
         public login()
         {
             InitializeComponent();
